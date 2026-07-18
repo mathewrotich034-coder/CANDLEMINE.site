@@ -17,7 +17,10 @@ ws.onmessage = (event) => {
             "R_100 Price: " + data.tick.quote;
     }
 };
+<h2>Deriv Connection</h2>
+<p id="status">Connecting...</p>
 
+<script src="derived.js"></script>
 ws.onerror = (err) => {
     console.log(err);
 };
