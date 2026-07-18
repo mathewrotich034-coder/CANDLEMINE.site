@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>CANDLEMINE - Signals</title>
+
+<style>
+*{
+margin:0;
+padding:0;
+box-sizing:border-box;
+font-family:Arial,sans-serif;
+}
+
+body{
+background:#0f172a;
+color:white;
+}
+
+header{
+background:#1e293b;
+padding:20px;
+text-align:center;
+font-size:28px;
+font-weight:bold;
+}
+
+.container{
+max-width:700px;
+margin:auto;
+padding:20px;
+}
+
+.card{
+background:#1e293b;
+padding:20px;
+border-radius:10px;
+margin-top:20px;
+}
+
+button{
+width:100%;
+padding:15px;
+font-size:18px;
+background:#16a34a;
+color:white;
+border:none;
+border-radius:8px;
+cursor:pointer;
+margin-top:15px;
+}
+
+button:hover{
+background:#15803d;
+}
+
+.signal{
+margin-top:20px;
+font-size:24px;
+font-weight:bold;
+text-align:center;
+color:#22c55e;
+}
+
+footer{
+margin-top:40px;
+padding:15px;
+text-align:center;
+background:#1e293b;
+}
+</style>
+
+</head>
+
+<body>
+
+<header>
+📊 CANDLEMINE SIGNALS
+</header>
+
+<div class="container">
+
+<div class="card">
+<h2>Market Signal Scanner</h2>
+<p>Press the button below to generate a demo market signal.</p>
+
+<button onclick="generateSignal()">
+Generate Signal
+</button>
+
+<div class="signal" id="signal">
+Waiting...
+</div>
+
+</div>
+
+<div class="card">
+<h2>Current Status</h2>
+
+<p>Market: <span id="market">Volatility 75</span></p>
+<p>Trend: <span id="trend">Waiting...</span></p>
+<p>Confidence: <span id="confidence">0%</span></p>
+
+</div>
+
+</div>
+
+<footer>
+© 2026 CANDLEMINE | Trading Tools
+</footer>
+
+<script>
+
+function generateSignal(){
+
+const signals=[
+"BUY 📈",
+"SELL 📉",
+"WAIT ⏳",
+"STRONG BUY 🚀",
+"STRONG SELL 🔻"
+];
+
+const trends=[
+"UPTREND",
+"DOWNTREND",
+"SIDEWAYS"
+];
+
+const signal=signals[Math.floor(Math.random()*signals.length)];
+const trend=trends[Math.floor(Math.random()*trends.length)];
+const confidence=Math.floor(Math.random()*21)+80;
+
+document.getElementById("signal").innerHTML=signal;
+document.getElementById("trend").innerHTML=trend;
+document.getElementById("confidence").innerHTML=confidence+"%";
+
+}
+
+</script>
+
+</body>
+  </html>
