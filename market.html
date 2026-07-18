@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>CANDLEMINE Live Market</title>
+
+<style>
+body{
+    background:#0f172a;
+    color:white;
+    font-family:Arial,sans-serif;
+    text-align:center;
+}
+
+h1{
+    margin-top:30px;
+}
+
+#price{
+    font-size:40px;
+    color:#22c55e;
+    margin-top:40px;
+}
+</style>
+
+</head>
+<body>
+
+<h1>📈 CANDLEMINE Live Market</h1>
+
+<h2>Volatility 100 Index</h2>
+
+<div id="price">Connecting...</div>
+
+<script>
+
+const ws = new WebSocket("wss://ws.derivws.com/websockets/v3?app_id=1089");
+
+ws.onopen = function(){
+
+    ws.send(JSON.stringify({
+        ticks:"R_100"
+    }));
+
+};
+
+ws.onmessage = function(msg){
+
+    const data = JSON.parse(msg.data);
+
+    if(data.tick){
+
+        document.getElementById("price").innerHTML =
+        data.tick.quote;
+
+    }
+
+};
+
+</script>
+
+</body>
+</html>
