@@ -40,3 +40,31 @@
     }
   </style>
 </
+<script>
+const ws = new WebSocket("wss://ws.derivws.com/websockets/v3?app_id=33RFqlv2oelrAu4ebwJ6T");
+
+ws.onopen = function () {
+    console.log("Connected to Deriv");
+
+    ws.send(JSON.stringify({
+        ticks: "R_100",
+        subscribe: 1
+    }));
+};
+
+ws.onmessage = function (event) {
+    const data = JSON.parse(event.data);
+
+    if (data.tick) {
+        document.getElementById("price").innerText = data.tick.quote;
+    }
+};
+
+ws.onerror = function (error) {
+    console.log(error);
+};
+
+ws.onclose = function () {
+    console.log("Connection closed");
+};
+</script>
